@@ -1,0 +1,5 @@
+D:\SourceCode\ADManager\ISC.ActiveDirectory\obj\Debug\ISC.ActiveDirectory.csproj.CoreCompileInputs.cache
+D:\SourceCode\ADManager\ISC.ActiveDirectory\bin\Debug\ISC.ActiveDirectory.dll
+D:\SourceCode\ADManager\ISC.ActiveDirectory\bin\Debug\ISC.ActiveDirectory.pdb
+D:\SourceCode\ADManager\ISC.ActiveDirectory\obj\Debug\ISC.ActiveDirectory.dll
+D:\SourceCode\ADManager\ISC.ActiveDirectory\obj\Debug\ISC.ActiveDirectory.pdb
