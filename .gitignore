@@ -3,3 +3,8 @@
 ################################################################################
 
 /.vs
+/ISC.ActiveDirectory/obj
+/ISC.ActiveDirectory/bin/Debug
+/ISC.ActiveDirectoryManager/bin
+/ISC.ActiveDirectoryManager/obj/Debug
+/packages

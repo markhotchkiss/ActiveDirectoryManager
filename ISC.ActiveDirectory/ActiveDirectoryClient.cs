@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.DirectoryServices;
 
 namespace ISC.ActiveDirectory
@@ -11,7 +12,6 @@ namespace ISC.ActiveDirectory
         {
             try
             {
-                //var ldapPath = "LDAP://192.168.1.xx";
                 var directionEntry = new DirectoryEntry(LdapConnectionString, domain + "\\" + username, currentPassword);
                 if (directionEntry != null)
 
@@ -32,8 +32,27 @@ namespace ISC.ActiveDirectory
             }
             catch (Exception ex)
             {
-                throw ex;
+                ChangeMyPassword(domain, username, currentPassword, newPassword);
             }
+        }
+
+        public void ChangeMyPassword(string domainName, string userName, string currentPassword, string newPassword)
+        {
+            var adminUser = ConfigurationManager.AppSettings["LDAPAdminUser"];
+            var adminPass = ConfigurationManager.AppSettings["LDAPAdminPass"];
+
+            var de = new DirectoryEntry(LdapConnectionString, domainName + "\\" + adminUser, adminPass);
+            var deSearch = new DirectorySearcher(de)
+            {
+                Filter = "(SAMAccountName=" + userName + ")"
+            };
+
+            var directoryEntry = deSearch.FindOne();
+
+            var item = directoryEntry.GetDirectoryEntry();
+            item.Invoke("SetPassword", new object[] { newPassword });
+
+            item.Close();
         }
     }
 }
